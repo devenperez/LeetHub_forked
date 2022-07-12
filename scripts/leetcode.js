@@ -25,6 +25,7 @@ const languages = {
 const readmeMsg = 'Create README - LeetHub';
 const discussionMsg = 'Prepend discussion post - LeetHub';
 const createNotesMsg = 'Attach NOTES - LeetHub';
+const statsMsg = 'Attach commit STATS - LeetHub';
 
 // problem types
 const NORMAL_PROBLEM = 0;
@@ -669,7 +670,16 @@ const loader = setInterval(() => {
           }
         }, 500);
       }
-
+      
+      /* add stats page for easy extraction */
+      uploadGit(
+            btoa(unescape(encodeURIComponent(probStats))),
+            problemName,
+            'STATS.md',
+            statsMsg,
+            'upload',
+          );
+      
       /* Upload code to Git */
       setTimeout(function () {
         findCode(
