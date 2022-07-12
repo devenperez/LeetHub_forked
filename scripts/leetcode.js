@@ -670,16 +670,16 @@ const loader = setInterval(() => {
           }
         }, 500);
       }
-      
+
       /* add stats page for easy extraction */
       uploadGit(
-            btoa(unescape(encodeURIComponent(probStats))),
-            problemName,
-            'STATS.md',
-            statsMsg,
-            'upload',
-          );
-      
+        btoa(unescape(encodeURIComponent(probStats))),
+        problemName,
+        'STATS.md',
+        statsMsg,
+        'upload',
+      );
+
       /* Upload code to Git */
       setTimeout(function () {
         findCode(
