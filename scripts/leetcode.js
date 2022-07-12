@@ -672,13 +672,15 @@ const loader = setInterval(() => {
       }
 
       /* add stats page for easy extraction */
-      uploadGit(
-        btoa(unescape(encodeURIComponent(probStats))),
-        problemName,
-        'STATS.md',
-        statsMsg,
-        'upload',
-      );
+      setTimeout(function () {
+        uploadGit(
+          btoa(unescape(encodeURIComponent(probStats))),
+          problemName,
+          'STATS.md',
+          statsMsg,
+          'upload',
+        );
+      }, 500);
 
       /* Upload code to Git */
       setTimeout(function () {
