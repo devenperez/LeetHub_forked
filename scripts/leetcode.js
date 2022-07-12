@@ -24,7 +24,7 @@ const languages = {
 /* Commit messages */
 const readmeMsg = 'Create README - LeetHub';
 const discussionMsg = 'Prepend discussion post - LeetHub';
-const createNotesMsg = 'Attach NOTES - LeetHub';
+const createNotesMsg = 'Attach STATS - LeetHub';
 
 // problem types
 const NORMAL_PROBLEM = 0;
@@ -653,16 +653,16 @@ const loader = setInterval(() => {
 
       /* get the notes and upload it */
       /* only upload notes if there is any */
-      notes = getNotesIfAny();
+      notes = probStats;
       if (notes.length > 0) {
         setTimeout(function () {
           if (notes != undefined && notes.length != 0) {
-            console.log('Create Notes');
+            console.log('Create Stats');
             // means we can upload the notes too
             uploadGit(
               btoa(unescape(encodeURIComponent(notes))),
               problemName,
-              'NOTES.md',
+              'STATS.md',
               createNotesMsg,
               'upload',
             );
