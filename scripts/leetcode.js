@@ -672,6 +672,7 @@ const loader = setInterval(() => {
       }
 
       /* add stats page for easy extraction */
+      console.log('Create Stats');
       setTimeout(function () {
         uploadGit(
           btoa(unescape(encodeURIComponent(probStats))),
