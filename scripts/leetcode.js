@@ -654,6 +654,8 @@ const loader = setInterval(() => {
       /* get the notes and upload it */
       /* only upload notes if there is any */
       notes = probStats;
+      fileExtention = language.substring(1)
+      statsFileName = `STATS_${fileExtention}.md`
       if (notes.length > 0) {
         setTimeout(function () {
           if (notes != undefined && notes.length != 0) {
@@ -662,7 +664,7 @@ const loader = setInterval(() => {
             uploadGit(
               btoa(unescape(encodeURIComponent(notes))),
               problemName,
-              'STATS.md',
+              statsFileName,
               createNotesMsg,
               'upload',
             );
