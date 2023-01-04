@@ -1,5 +1,5 @@
 // parseQuestion function with an embeded checkElem() and autoexecuted
-const PARSE_QUESTION_FUNC = `(function() {
+const README_CONTENTS_CODE = `(function() {
     let checkElem = (elem) =>  elem && elem.length > 0;
 
     var questionUrl = window.location.href;
@@ -60,6 +60,20 @@ const PARSE_QUESTION_FUNC = `(function() {
     return null;
   })()`
 
+// Function that prompts a download
+const DOWNLOADER_FUNC = `function(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+  
+    element.style.display = 'none';
+    document.body.appendChild(element);
+  
+    element.click();
+  
+    document.body.removeChild(element);
+}`
+
 
 // Activates create README.md button
 chrome.tabs.query({active: true, currentWindow: true}, tabs => {
@@ -77,9 +91,10 @@ document.getElementById("readme").addEventListener("click", function() {
     chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
         chrome.tabs.executeScript(
             tabs[0].id,
-            { code: `console.log(${PARSE_QUESTION_FUNC});` }
+            { code: `(${DOWNLOADER_FUNC})("README.md", ${README_CONTENTS_CODE})` }
         );
     });
+    
 });
 
 
